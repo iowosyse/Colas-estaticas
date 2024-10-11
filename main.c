@@ -4,6 +4,7 @@
 void menu();
 void meter();
 int sacar();
+int sacarLifo();
 void recorre();
 void mostrar();
 
@@ -20,7 +21,7 @@ void menu()
     int opt;
     do
     {
-        printf("1. Meter\n2. Sacar\n3. Mostrar\n0. Salir\n>> ");
+        printf("1. Meter\n2. Sacar\n3. Sacar LIFO\n4.nMostrar\n0. Salir\n>> ");
         scanf("%d", &opt);
 
         switch (opt)
@@ -32,6 +33,9 @@ void menu()
                 printf("Elemento que sale: %d\n", sacar());
                 break;
             case 3:
+                printf("Elemento que sale: %d\n", sacarLifo());
+                break;
+            case 4:
                 mostrar();
                 break;
             case 0:
@@ -102,6 +106,20 @@ int sacar()
     }
 
     return elem;
+}
+
+int sacarLifo()
+{
+    int aux = 0;
+    if (ind == end)
+    {
+        printf("Cola vacía");
+        return aux;
+    }
+    aux = cola[end - 1];
+    end --;
+    cola[end] = 0;
+    return aux;
 }
 
 void mostrar()
